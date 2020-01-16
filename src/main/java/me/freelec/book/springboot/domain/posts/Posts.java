@@ -3,13 +3,14 @@ package me.freelec.book.springboot.domain.posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import me.freelec.book.springboot.domain.BaseTimeEntity;
 
 import javax.persistence.*;
 
 @Getter
 @RequiredArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
