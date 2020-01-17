@@ -1,6 +1,7 @@
-package me.freelec.book.springboot.domain.config.auth;
+package me.freelec.book.springboot.domain.config;
 
 import lombok.RequiredArgsConstructor;
+import me.freelec.book.springboot.domain.config.auth.LoginUserArgumentResolver;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
