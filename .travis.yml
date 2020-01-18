@@ -15,6 +15,25 @@ script: "./gradlew clean build"
 
 #CI 실행 완료시 메일로 알람
 
+before_deploy:
+  - zip -r freelec-springboot2-webservice *
+  - mkdir -p deploy
+  - mv freelect-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: freelec-springboot-build-jinwoo
+
+    region : ap-northeast-2
+    skip_cleanup: true
+    acl : private
+    local_dir: deploy
+    wait-until-deployed : true
+
 notifications:
   email :
     recipients:
