@@ -18,12 +18,11 @@ script: "./gradlew clean build"
 before_deploy:
   - zip -r freelec-springboot2-webservice *
   - mkdir -p deploy
-  - mv freelect-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
 
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
-
     secret_access_key: $AWS_SECRET_KEY
 
     bucket: freelec-springboot-build-jinwoo
@@ -34,6 +33,20 @@ deploy:
     local_dir: deploy
     wait-until-deployed : true
 
+  - provider: codedepoly
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: freelec-springboot-build
+    key: freelec-springboot2-webservice.zip
+
+    bundle_type : zip
+
+    application  : freelec-springboot2-webservice
+    deployment_group : freelect-springboot2-webservice
+
+    region : ap-northeast-2
+    wait-until-deployed: true
 notifications:
   email :
     recipients:
