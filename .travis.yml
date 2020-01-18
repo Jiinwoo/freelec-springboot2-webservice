@@ -37,7 +37,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
 
-    bucket: freelec-springboot-build
+    bucket: freelec-springboot-build-jinwoo
     key: freelec-springboot2-webservice.zip
 
     bundle_type : zip
